@@ -12,7 +12,7 @@ TOKEN=""
 NODE_ID=""
 KERNEL="xray"
 
-RELEASE_BASE="https://github.com/xiaobaifafa/Xboard-Node/releases/download/v1"
+RELEASE_BASE="https://github.com/xiaobaifafa/Xboard-Node-Install/releases/download/install"
 
 BIN="/usr/local/bin/xboard-node"
 XBCTL="/usr/local/bin/xbctl"
@@ -68,12 +68,12 @@ esac
 
 case "$ARCH" in
   amd64)
-    NODE_SHA256="fc7acd7685872db758c2918848df8707ae763c18884f8bb9c40812bb21a5668a"
-    XBCTL_SHA256="c19c8ea3f9f1f90299b13b1adecf0ce06920e47ff92eb49a262d2e2a92bd0850"
+    NODE_SHA256="f72c5ea3878f5d61b46e492d2a088f0da50c16f922abd883f178ef6c1694fc64"
+    XBCTL_SHA256="db49ff8cbba2d3a7fa488f6e3ae6657e05efb929195190511e4a16531cf73a26"
     ;;
   arm64)
-    NODE_SHA256="ef9cf5981877f24ff89fe8ea81f68d62c9ac492876d9b0779129a681c1c71ce8"
-    XBCTL_SHA256="0868c42cf5566013a9218cb717f74b8d879dcfddcdae03bb3b0c2a149cee77f8"
+    NODE_SHA256="55f5dfcea8bfac6ee139b1907af7c059add4da1eb442d4f957757b4df17abd0a"
+    XBCTL_SHA256="f50b7e5d9dfb951fad3a79fc70c687a18c501c81602b5d19c0519de1eb34f471"
     ;;
 esac
 
@@ -82,7 +82,7 @@ cleanup() { rm -rf "$TMP_DIR"; }
 trap cleanup EXIT
 
 log "检测到 CPU 架构：$ARCH"
-log "从 GitHub Release v1 下载程序"
+log "从 GitHub Release install 下载程序"
 curl -fL --retry 5 --retry-all-errors --retry-delay 2 \
   "$RELEASE_BASE/xboard-node-linux-$ARCH" -o "$TMP_DIR/xboard-node"
 curl -fL --retry 5 --retry-all-errors --retry-delay 2 \

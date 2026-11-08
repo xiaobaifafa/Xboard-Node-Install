@@ -47,7 +47,7 @@ curl -fsSL https://raw.githubusercontent.com/cedar2025/xboard-node/dev/install.s
 
 ### One-command installer for this fork (Release v1)
 
-This fork provides a one-command installer for the prebuilt Linux binaries in the pinned [GitHub Release v1](https://github.com/xiaobaifafa/Xboard-Node/releases/tag/v1). It automatically detects the CPU architecture, downloads the matching \`xboard-node\` and \`xbctl\` binaries, verifies both files with SHA256, installs them, creates the node configuration, and registers the \`xboard-node\` systemd service. The installer URL is stable: do not add a script-version query such as ?v=....
+This independent repository provides a one-command installer for the prebuilt Linux binaries in its pinned [GitHub Release install](https://github.com/xiaobaifafa/Xboard-Node-Install/releases/tag/install). It automatically detects the CPU architecture, downloads the matching \`xboard-node\` and \`xbctl\` binaries, verifies both files with SHA256, installs them, creates the node configuration, and registers the \`xboard-node\` systemd service. The installer URL is stable: do not add a script-version query such as ?v=....
 
 **Supported systems:** Linux with systemd on \`amd64\` / \`x86_64\` or \`arm64\` / \`aarch64\`.
 
@@ -64,7 +64,7 @@ Before running the command, get these three values from your Xboard panel:
 Replace the example panel URL, token, and node ID with your own values. Run the command as shown; it will request root privileges through \`sudo\`.
 
 \`\`\`bash
-curl -fsSL https://raw.githubusercontent.com/xiaobaifafa/Xboard-Node/fix/close-user-connections-on-quota/scripts/install-test-node.sh | sudo bash -s -- --mode node --panel https://panel.example.com/ --token 'YOUR_NODE_TOKEN' --node-id 1 --kernel xray
+curl -fsSL https://raw.githubusercontent.com/xiaobaifafa/Xboard-Node-Install/main/scripts/install-test-node.sh | sudo bash -s -- --mode node --panel https://panel.example.com/ --token 'YOUR_NODE_TOKEN' --node-id 1 --kernel xray
 \`\`\`
 
 The installer downloads the correct binaries for the server automatically. You do not need to upload binaries manually or install Go.

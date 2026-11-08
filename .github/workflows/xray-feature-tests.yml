@@ -1,0 +1,36 @@
+name: Xray Feature Branch Tests
+
+on:
+  push:
+    branches:
+      - fix/close-user-connections-on-quota
+
+concurrency:
+  group: xray-feature-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Go tests and Linux build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Download pinned Xray core fork
+        run: |
+          go mod download github.com/xtls/xray-core
+
+      - name: Test Xray raw splice implementation
+        run: go test -race github.com/xtls/xray-core/proxy -count=1
+
+      - name: Run tests
+        run: make test
+
+      - name: Build Linux amd64
+        run: make build-linux
